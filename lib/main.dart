@@ -1,15 +1,18 @@
+import 'package:college_community_apk/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'Login.dart';  // Import the Login screen
-import 'Signup.dart'; // Import the Signup screen
-import 'home.dart'; // Import the Home page
-import 'chat.dart'; // Import the ChatList page
-import 'announcement.dart'; // Import the Announcement page
+import 'auth/login.dart'; // Import the Login screen
+import 'auth/signup.dart'; // Import the Signup screen
+import 'pages/chat.dart'; // Import the ChatList page
+import 'pages/announcement.dart'; // Import the Announcement page
+import 'splash_screen.dart'; // Import the Splash Screen
 
 void main() {
-  runApp(CollegeCommunityApp());
+  runApp(const CollegeCommunityApp());
 }
 
 class CollegeCommunityApp extends StatelessWidget {
+  const CollegeCommunityApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,17 +20,20 @@ class CollegeCommunityApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/login',  // Start with the login screen
+      initialRoute: '/', // Start with the splash screen
       routes: {
-        '/login': (context) => LoginScreen(),
-        '/signup': (context) => SignupScreen(),
-        '/home': (context) => HomePage(), // Add the home route here
-        '/chat': (context) => ChatList(), // Route for chat
-        '/announcement': (context) => AnnouncementPage(isSuperUser: false), // Example route for announcements
+        '/': (context) => const SplashScreen(), // Splash screen route
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(), // Ensure this is const
+        '/home/home_page': (context) => const HomePage(), // Home route
+        '/chat': (context) => const ChatList(), // Route for chat
+        '/announcement': (context) => const AnnouncementPage(
+            isSuperUser: false), // Route for announcements
       },
-      // Optional: Handle unknown routes
       onUnknownRoute: (settings) {
-        return MaterialPageRoute(builder: (context) => LoginScreen()); // Redirect to login on unknown routes
+        return MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ); // Redirect to login on unknown routes
       },
     );
   }

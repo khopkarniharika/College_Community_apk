@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AcademicsPage extends StatelessWidget {
+  const AcademicsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Academics'),
+        title: const Text('Academics'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,13 +23,14 @@ class AcademicsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTile(BuildContext context, String title, IconData icon, Widget page) {
+  Widget _buildTile(
+      BuildContext context, String title, IconData icon, Widget page) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         leading: Icon(icon, size: 40),
-        title: Text(title, style: TextStyle(fontSize: 20)),
-        trailing: Icon(Icons.arrow_forward),
+        title: Text(title, style: const TextStyle(fontSize: 20)),
+        trailing: const Icon(Icons.arrow_forward),
         onTap: () {
           Navigator.push(
             context,
@@ -41,13 +44,15 @@ class AcademicsPage extends StatelessWidget {
 
 // Placeholder for Library Page
 class LibraryPage extends StatelessWidget {
+  const LibraryPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Library'),
+        title: const Text('Library'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Library Section'),
       ),
     );
@@ -56,13 +61,15 @@ class LibraryPage extends StatelessWidget {
 
 // Placeholder for Classroom Page
 class ClassroomPage extends StatelessWidget {
+  const ClassroomPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Classroom'),
+        title: const Text('Classroom'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Classroom Section'),
       ),
     );
@@ -71,13 +78,15 @@ class ClassroomPage extends StatelessWidget {
 
 // Placeholder for Events Page
 class EventsPage extends StatelessWidget {
+  const EventsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Events'),
+        title: const Text('Events'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Events Section'),
       ),
     );
@@ -86,13 +95,15 @@ class EventsPage extends StatelessWidget {
 
 // Placeholder for Feedback Page
 class FeedbackPage extends StatelessWidget {
+  const FeedbackPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feedback'),
+        title: const Text('Feedback'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Feedback Section'),
       ),
     );

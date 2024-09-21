@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'chat_room.dart'; // Import the chat room
 
 class ChatList extends StatefulWidget {
+  const ChatList({super.key});
+
   @override
   _ChatListState createState() => _ChatListState();
 }
 
 class _ChatListState extends State<ChatList> {
-  final List<String> users = ["Alice", "Bob", "Charlie", "David", "Eve"]; // Sample user list
+  final List<String> users = [
+    "Alice",
+    "Bob",
+    "Charlie",
+    "David",
+    "Eve"
+  ]; // Sample user list
   final List<String> recentChats = []; // List to hold recent chats
   String searchQuery = '';
 
@@ -41,7 +49,7 @@ class _ChatListState extends State<ChatList> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search...',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.search),
@@ -54,7 +62,7 @@ class _ChatListState extends State<ChatList> {
             ),
           ),
           const SizedBox(height: 8.0),
-          Container(
+          SizedBox(
             height: 80.0, // Height for recent chats section
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

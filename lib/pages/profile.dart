@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -11,20 +13,23 @@ class _ProfilePageState extends State<ProfilePage> {
   String username = '';
   String linkedin = '';
   String github = '';
-  bool isEditMode = true; // Initial mode is edit mode
+  bool isEditMode = false; // Changed to false for initial display mode
 
-  List<String> posts = ['First post content', 'Second post content']; // Mock posts
+  List<String> posts = [
+    'First post content',
+    'Second post content'
+  ]; // Mock posts
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout), // Log out icon
+            icon: const Icon(Icons.logout), // Log out icon
             onPressed: () {
-              // Handle logout functionality
+              _logout();
             },
           ),
         ],
@@ -34,6 +39,12 @@ class _ProfilePageState extends State<ProfilePage> {
         child: isEditMode ? _buildEditProfile() : _buildDisplayProfile(),
       ),
     );
+  }
+
+  void _logout() {
+    // Clear saved state here if you're using shared preferences or any state management
+    Navigator.of(context)
+        .pushReplacementNamed('/login'); // Navigate to login page
   }
 
   Widget _buildEditProfile() {
@@ -49,22 +60,23 @@ class _ProfilePageState extends State<ProfilePage> {
               backgroundImage: AssetImage(profileImage),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _buildTextField('Username', username, (value) => username = value),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildTextField('Bio', bio, (value) => bio = value),
-          SizedBox(height: 10),
-          _buildTextField('LinkedIn URL', linkedin, (value) => linkedin = value),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
+          _buildTextField(
+              'LinkedIn URL', linkedin, (value) => linkedin = value),
+          const SizedBox(height: 10),
           _buildTextField('GitHub URL', github, (value) => github = value),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               setState(() {
                 isEditMode = false;
               });
             },
-            child: Text('Save Profile'),
+            child: const Text('Save Profile'),
           ),
         ],
       ),
@@ -83,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 backgroundImage: AssetImage(profileImage),
               ),
               IconButton(
-                icon: Icon(Icons.edit, size: 20),
+                icon: const Icon(Icons.edit, size: 20),
                 onPressed: () {
                   setState(() {
                     isEditMode = true;
@@ -92,16 +104,16 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _buildInfoContainer('Username', username),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildInfoContainer('Bio', bio),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildInfoContainer('LinkedIn', linkedin),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildInfoContainer('GitHub', github),
-          SizedBox(height: 20),
-          Divider(), // Divider between profile info and posts
+          const SizedBox(height: 20),
+          const Divider(), // Divider between profile info and posts
           _buildPostSection(), // Post section below profile
         ],
       ),
@@ -111,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildTextField(
       String labelText, String initialValue, ValueChanged<String> onChanged) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
@@ -128,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildInfoContainer(String label, String value) {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.blueGrey[50],
         borderRadius: BorderRadius.circular(10),
@@ -138,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Text(
             '$label: ',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           Text(value.isEmpty ? 'Not provided' : value),
         ],
@@ -150,18 +162,18 @@ class _ProfilePageState extends State<ProfilePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Posts',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true, // Prevent infinite scroll in the post section
           itemCount: posts.length,
           itemBuilder: (context, index) {
             return Card(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: const EdgeInsets.symmetric(vertical: 5),
               child: ListTile(
                 title: Text('Post #${index + 1}'),
                 subtitle: Text(posts[index]),

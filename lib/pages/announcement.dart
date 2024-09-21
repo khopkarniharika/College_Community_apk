@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 class AnnouncementPage extends StatefulWidget {
   final bool isSuperUser;
 
-  const AnnouncementPage({Key? key, required this.isSuperUser}) : super(key: key);
+  const AnnouncementPage({super.key, required this.isSuperUser});
 
   @override
   _AnnouncementPageState createState() => _AnnouncementPageState();
 }
 
 class _AnnouncementPageState extends State<AnnouncementPage> {
-  final List<Map<String, String>> announcements = []; // List to hold announcements
+  final List<Map<String, String>> announcements =
+      []; // List to hold announcements
   final TextEditingController titleController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
 
@@ -53,7 +54,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                 child: const Text('Post Announcement'),
               ),
             ] else ...[
-              const Center(child: Text('You are not authorized to post announcements')),
+              const Center(
+                  child: Text('You are not authorized to post announcements')),
             ],
             const SizedBox(height: 8.0), // Spacing before the list
             Expanded(

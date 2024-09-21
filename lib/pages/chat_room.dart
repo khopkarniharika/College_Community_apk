@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ChatRoom extends StatefulWidget {
   final String user;
 
-  const ChatRoom({Key? key, required this.user}) : super(key: key);
+  const ChatRoom({super.key, required this.user});
 
   @override
   _ChatRoomState createState() => _ChatRoomState();
@@ -64,9 +64,10 @@ class _ChatRoomState extends State<ChatRoom> {
                       hintText: 'Type your message...',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(color: Colors.grey),
+                        borderSide: const BorderSide(color: Colors.grey),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 15.0),
                     ),
                   ),
                 ),
