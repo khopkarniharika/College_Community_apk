@@ -110,15 +110,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
 
-                    // Save the login status in shared preferences
+                    // Save user information in shared preferences
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     await prefs.setBool('isLoggedIn', true);
-
-                    // You can handle the actual sign-up logic here
+                    await prefs.setString('name', name); // Save name
 
                     // Navigate to Home Page after successful signup
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/home/home_page');
                     print('Name: $name, Email: $email, Password: $password');
                   }
                 },
