@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "131692498389",
+    "project_id": "edge-46cf5",
+    "storage_bucket": "edge-46cf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131692498389:android:d0ae113a1880d64c4ac15c",
+        "android_client_info": {
+          "package_name": "com.example.college_community_apk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAujBbNmE8HhjI-Zqv4Csob5jFAgiV7Ch0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

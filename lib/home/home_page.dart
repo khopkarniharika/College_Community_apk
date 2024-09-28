@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final ImagePicker _picker = ImagePicker();
-  List<File> _posts = []; // List to hold uploaded media
+  final List<File> _posts = []; // List to hold uploaded media
 
   // Dummy user name for demonstration
   String userName = "karan";
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildOtherScreens() {
     switch (_selectedIndex) {
       case 1:
-        return ThreadsPage();
+        return const ThreadsPage();
       case 2:
         return const AcademicsPage();
       case 3:

@@ -6,11 +6,11 @@ class PostWidget extends StatelessWidget {
   final String postDescription;
 
   const PostWidget({
-    Key? key,
+    super.key,
     required this.username,
     required this.postImage,
     required this.postDescription,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

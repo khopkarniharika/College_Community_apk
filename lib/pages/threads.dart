@@ -29,7 +29,7 @@ class Reply {
 List<Thread> sampleThreads = [];
 
 class ThreadsPage extends StatefulWidget {
-  const ThreadsPage({Key? key}) : super(key: key);
+  const ThreadsPage({super.key});
 
   @override
   _ThreadsPageState createState() => _ThreadsPageState();
@@ -127,8 +127,7 @@ class ThreadWidget extends StatelessWidget {
   final Function(Reply) onReplyAdded;
 
   const ThreadWidget(
-      {Key? key, required this.thread, required this.onReplyAdded})
-      : super(key: key);
+      {super.key, required this.thread, required this.onReplyAdded});
 
   @override
   Widget build(BuildContext context) {

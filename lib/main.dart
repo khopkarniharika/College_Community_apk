@@ -1,3 +1,4 @@
+import 'package:college_community_apk/firebase_options.dart';
 import 'package:college_community_apk/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'auth/login.dart'; // Import the Login screen
@@ -5,8 +6,12 @@ import 'auth/signup.dart'; // Import the Signup screen
 import 'pages/chat.dart'; // Import the ChatList page
 import 'pages/announcement.dart'; // Import the Announcement page
 import 'splash_screen.dart'; // Import the Splash Screen
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const CollegeCommunityApp());
 }
 

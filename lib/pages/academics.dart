@@ -13,10 +13,13 @@ class AcademicsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildTile(context, 'Library', Icons.library_books, LibraryPage()),
-            _buildTile(context, 'Classroom', Icons.class_, ClassroomPage()),
-            _buildTile(context, 'Events', Icons.event, EventsPage()),
-            _buildTile(context, 'Feedback', Icons.feedback, FeedbackPage()),
+            _buildTile(
+                context, 'Library', Icons.library_books, const LibraryPage()),
+            _buildTile(
+                context, 'Classroom', Icons.class_, const ClassroomPage()),
+            _buildTile(context, 'Events', Icons.event, const EventsPage()),
+            _buildTile(
+                context, 'Feedback', Icons.feedback, const FeedbackPage()),
           ],
         ),
       ),
