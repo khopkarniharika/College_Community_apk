@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -233,9 +233,9 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _openEditPage, // Open the edit page when pressed
-        child: const Icon(Icons.edit),
-        mini: true, // Small edit button
+        onPressed: _openEditPage,
+        mini: true, // Open the edit page when pressed
+        child: const Icon(Icons.edit), // Small edit button
       ),
     );
   }

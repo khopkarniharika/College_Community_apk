@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,6 +13,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
+
+  final FirebaseAuth _auth = FirebaseAuth.instance; // Initialize Firebase Auth
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +71,41 @@ class _LoginScreenState extends State<LoginScreen> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
 
-                    // Save the login status in shared preferences
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    await prefs.setBool('isLoggedIn', true);
+                    try {
+                      // Attempt to sign in with Firebase Authentication
+                      UserCredential userCredential = await _auth
+                          .signInWithEmailAndPassword(
+                              email: email, password: password);
 
-                    // Navigate to Home Page after successful login
-                    Navigator.pushReplacementNamed(context, '/home/home_page');
-                    print('Email: $email, Password: $password');
+                      User? user = userCredential.user;
+
+                      if (user != null) {
+                        // Save login status in shared preferences
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setBool('isLoggedIn', true);
+                        await prefs.setString('email', email);
+
+                        // Navigate to Home Page after successful login
+                        Navigator.pushReplacementNamed(
+                            context, '/home/home_page');
+                        print('Login Successful!');
+                      }
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'user-not-found') {
+                        print('No user found for that email.');
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text('No user found for that email.')));
+                      } else if (e.code == 'wrong-password') {
+                        print('Wrong password provided.');
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text('Wrong password provided.')));
+                      }
+                    } catch (e) {
+                      print('Error: $e');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('An error occurred')));
+                    }
                   }
                 },
                 style: ElevatedButton.styleFrom(
